@@ -31,8 +31,6 @@ with tf.device("/gpu:0"):
 
 	#Test - Train Data Directories
 	dirname = os.path.dirname(os.path.realpath(__file__))
-	#test_data_path = os.path.join(os.path.abspath(os.path.join(dirname, os.pardir)), 'test')
-	#train_data_path = os.path.join(os.path.abspath(os.path.join(dirname, os.pardir)), 'train')
 	test_data_path = os.path.join(dirname, 'test')
 	train_data_path = os.path.join(dirname, 'train')
 
