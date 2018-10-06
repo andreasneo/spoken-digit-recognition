@@ -40,8 +40,8 @@ with tf.device("/gpu:0"):
 	def get_available_gpus():
 	    local_device_protos = device_lib.list_local_devices()
 	    return [x.physical_device_desc for x in local_device_protos if x.device_type == 'GPU']
-    # Search the training data location to find *.wav files and their label.
-    # Returns labels list and files list
+        # Search the training data location to find *.wav files and their label.
+        # Returns labels list and files list
 	def get_train_data(dirpath=train_data_path, extension='wav'):
 		print('Loading training data from: ', dirpath)
 		train_paths = glob(os.path.join(dirpath, r'*/*' + extension))
@@ -53,8 +53,8 @@ with tf.device("/gpu:0"):
 			labels.append(os.path.basename(os.path.dirname(path)))
 		return labels, file_names
 
-    # If the sample rate of a wav file is less than 16000, this function pads it
-    # with 0s to make its length 16000.
+        # If the sample rate of a wav file is less than 16000, this function pads it
+        # with 0s to make its length 16000.
 	def wav_padding(samples):
 		if len(samples) >= ORIGINAL_SAMPLE_RATE: return samples
 		else: return np.pad(samples, pad_width=(ORIGINAL_SAMPLE_RATE - len(samples), 0), mode='constant', constant_values=(0, 0))
@@ -71,9 +71,9 @@ with tf.device("/gpu:0"):
 
 	metrics = GetMetrics()
 
-    # The following function calculates the logarithmic values of a spectrogram.
-    # A spectrogram is an image that represents the spectrum of frequencies of
-    # the *.wav files used in training and testing.
+        # The following function calculates the logarithmic values of a spectrogram.
+        # A spectrogram is an image that represents the spectrum of frequencies of
+        # the *.wav files used in training and testing.
 	def spectrogram_calculation(audio, sample_rate, window_size=20,step_size=10, eps=1e-10):
 		nperseg = int(round(window_size * sample_rate / 1e3))
 		noverlap = int(round(step_size * sample_rate / 1e3))
@@ -85,7 +85,7 @@ with tf.device("/gpu:0"):
 		                                detrend=False)
 		return freqs, times, np.log(spec.T.astype(np.float32) + eps)
 
-    # Converts categorical variables (labels) into indicator variables.
+        # Converts categorical variables (labels) into indicator variables.
 	def label_convertion(labels):
 		nlabels = []
 		for label in labels:
