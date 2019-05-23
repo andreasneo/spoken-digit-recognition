@@ -1,5 +1,5 @@
 # Speech Recognition of Spoken Digits with CNN
-The purpose of this project is to implement and train a Convolutional Neural Network so that is is able to classify spoken digits from 0 to 9.
+The purpose of this project is to implement and train a Convolutional Neural Network so that will be able to classify spoken digits from 0 to 9.
 
 # Dataset
 Dataset: https://drive.google.com/file/d/1IYi645XVQSlwLTSc5emtqGEMF4E16nAS/view?usp=sharing .
